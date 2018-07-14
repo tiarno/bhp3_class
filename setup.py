@@ -13,7 +13,7 @@ setup(
     license = "MIT",
     keywords = "hack sniff python blackhat",
     url = "http://packages.python.org/bhp3_class",
-    packages=['bhp3_class', 'tests'],
+    packages=['bhp3_class'],
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 4 - Beta",
