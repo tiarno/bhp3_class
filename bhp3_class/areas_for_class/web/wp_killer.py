@@ -1,13 +1,15 @@
 from collections import deque
 from io import BytesIO
 from lxml import etree
+
 import requests
 import sys
 import threading
 import time
-WORDLIST = '/Users/jtimarnold/Downloads/cain.txt'
-SUCCESS = 'Welcome to WordPress!'
+
 EXTENSIONS = ['.php', '.bak', '.orig', '.inc']
+SUCCESS = 'Welcome to WordPress!'
+WORDLIST = '/Users/jtimarnold/Downloads/cain.txt'
 
 def get_words(resume=None):
     with open(WORDLIST) as f:

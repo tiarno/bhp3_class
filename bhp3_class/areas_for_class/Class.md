@@ -16,7 +16,7 @@
 - Web class Wednesdays 7:00 - 8:30 EDT
 - Interaction during class
 - Discord Channel to help each other
-https://discord.gg/GCrC94
+https://discord.gg/WR23qUj
 
 - Discord Office Hour Monday, 7:00 - 8:00
 - Direct message on Discord or email: tim@reachtim.com
@@ -56,8 +56,7 @@ https://discord.gg/GCrC94
 
 ## Structure of the repo
 
-This repo is structured as follows::
-
+```python
     bhp3_class/
         Install.md
         README.md
@@ -67,13 +66,14 @@ This repo is structured as follows::
           networking/
           packets/
           web/
-
           areas_for_class/
             Class.md
             demo_plus/
             networking/
             packets/
             web/
+
+```
 
 ---
 
@@ -96,8 +96,8 @@ Class will cover chapters 2, 3, 4, and 5 of
 the book Black Hat Python. We'll follow this order:
 
 -  `web`
--  `networking`
 -  `packets`
+-  `networking`
 
 ---
 
@@ -132,7 +132,7 @@ in VirtualBox and the VSCode IDE.
 
 ## Git notes
 
-- Never push creds
+- Never push creds!
 - Use your .gitignore file
 - push often
 - code with pep8
@@ -203,6 +203,8 @@ We'll use this later on in this part of the class.
 
 ## Code Hygiene and `pep8`
 
+<span style="color:lightblue">Demo</script>
+
 - `__main__`
 - import order
 - variable names
@@ -223,6 +225,7 @@ We'll use this later on in this part of the class.
 
 ---
 
+# Queues
 <span style="color:lightblue">Demo</script>
 
 - `myqueue.put()` 
@@ -269,6 +272,8 @@ http://docs.python-requests.org/en/master/
 ## Threads vs Processes
 
 <span style="color:lightblue">Demo</script>
+
+Generally:
 
 Multithreading is for responsive apps. 
 

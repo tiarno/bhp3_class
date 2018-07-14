@@ -1,11 +1,12 @@
-import queue
-import threading
 import os
+import queue
 import requests
+import threading
+import time
 
-THREADS = 10
-TARGET    = "http://boodelyboo.com/wordpress/"
 FILTERS   = [".jpg", ".gif", "png", ".css"]
+TARGET    = "http://boodelyboo.com/wordpress/"
+THREADS = 10
 
 web_paths = queue.Queue()
 
@@ -13,17 +14,19 @@ def gather_paths(dirname):
     os.chdir(dirname)
     for root, _, files in os.walk('.'):
         for fname in files:
+            if os.path.splitext(fname)[1] in FILTERS:
+                continue
             path = os.path.join(root, fname)
-            if os.path.splitext(fname)[1] not in FILTERS:
-                if path.startswith('.'):
-                    path = path[1:]
-                print(path)
-                web_paths.put(path)
+            if path.startswith('.'):
+                path = path[1:]
+            print(path)
+            web_paths.put(path)
 
 def test_remote():
     while not web_paths.empty():
         path = web_paths.get()
         url = f'{TARGET}{path}'
+        time.sleep(2)
         r = requests.get(url)
         if r.status_code == 200:
             print(f'Found location: {url}')
@@ -37,4 +40,5 @@ def run():
 if __name__ == '__main__':
   dirname = "/Users/jtimarnold/Downloads/wordpress"
   gather_paths(dirname)
+  input('Press return to continue.')
   run()
