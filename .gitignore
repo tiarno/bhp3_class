@@ -9,7 +9,7 @@ __pycache__/
 .vscode/ 
 Pipfile.lock
 bhp3_class.egg-info/
-
+export/
 # Distribution / packaging
 .Python
 env/

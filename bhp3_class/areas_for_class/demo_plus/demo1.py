@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import multiprocessing
 import os
 import pdb
@@ -31,8 +33,8 @@ def demo(name='fib_thread'):
         dirname = '/Users/jtimarnold/code/plastex/unittests'
         for root, dirs, files in os.walk(dirname):
             print(f'\nroot is {root}')
-            print(f'  containing these dirs {dirs}')
-            print(f'       and these files {files}')
+            pprint(f'  containing these dirs {dirs}')
+            pprint(f'       and these files {files}')
     elif name == 'debug':
         j = 0
         k = 0

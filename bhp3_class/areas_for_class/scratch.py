@@ -1,5 +1,6 @@
-from collections import dequeue
+from collections import deque
 import queue
+EXTENSIONS = ['.php', '.bak', '.orig', '.inc']
 
 print(f'my name is {__name__}')
 
@@ -24,7 +25,7 @@ def get_words():
     return words
 
 def main():
-    print('see how that\' different?')
+    print('see how that\'s different?')
 
 if __name__ == '__main__':
     main()

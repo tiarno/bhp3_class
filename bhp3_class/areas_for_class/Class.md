@@ -125,7 +125,7 @@ the book Black Hat Python. We'll follow this order:
 ## Optional 
 
 Use the installation instructions at the top
-level if you want help to install a Kali VM 
+level of this repo if you want to install a Kali VM 
 in VirtualBox and the VSCode IDE.
 
 ---
@@ -171,7 +171,8 @@ in VirtualBox and the VSCode IDE.
 
 <span style="color:red">Activity</script>
 
-`pipenv shell`
+- `pipenv shell`
+- `python`
 
 ```python
 Python 3.6.3 (default, Oct  3 2017, 21:16:13) 
@@ -196,8 +197,6 @@ We'll use this later on in this part of the class.
 ## os.walk
 
 <span style="color:lightblue">Demo</script>
-
-<span style="color:red">Activity</script>
 
 ---
 
@@ -228,27 +227,13 @@ We'll use this later on in this part of the class.
 # Queues
 <span style="color:lightblue">Demo</script>
 
-- `myqueue.put()` 
-- `myqueue.get()`
+- LIFO (last in, first out) # stack
+- `myqueue .put(), .get()
 
 ![queueimage](./images/phzXA.jpg)
 
-- `mydequeue.append()`
-- `mydequeue.popleft()`
-- `mydequeue.pop()`
-
----
-
-## timeit is your friend!
-
-    $ python -mtimeit -s'q=range(10000)' 'q.append(23); q.pop(0)'
-
-    100000 loops, best of 3: 5.81 usec per loop
-
-
-    $ python -mtimeit -s'import collections; q=collections.deque(range(10000))' 'q.append(23); q.popleft()'
-
-    1000000 loops, best of 3: 0.574 usec per loop
+- FIFO (first in, first out) # queue (ice-cream line)
+- `mydequeue .append() .popleft()`
 
 ---
 
@@ -258,7 +243,6 @@ We'll use this later on in this part of the class.
 
 - If you find yourself passing data
 structures among functions, think about a class.
-
 
 
 ---
@@ -285,7 +269,6 @@ Multiprocessing is for parallelism.
 
 <span style="color:lightblue">Demo</script>
 
-<span style="color:red">Activity</script>
 
 ---
 
@@ -302,8 +285,6 @@ Multiprocessing is for parallelism.
 ## `enumeration with dirfinder.py`
 
 <span style="color:lightblue">Demo</script>
-
-<span style="color:red">Activity</script>
 
 ---
 
@@ -367,7 +348,13 @@ http://boodelyboo.com/wordpress
 
 - BHP, Chapter 5 (web hacking)
 
+- GitHub Repo: https://github.com/tiarno/bhp3_class
+
+- PEP-8: https://www.datacamp.com/community/tutorials/pep8-tutorial-python-code
+
 - Requests http://docs.python-requests.org/en/master/
+
+- Threading: https://docs.python.org/3.6/library/threading.html
 
 - `BytesIO` https://webkul.com/blog/using-io-for-creating-file-object/
 
@@ -375,9 +362,12 @@ http://boodelyboo.com/wordpress
 
 ## Your Job
 
-- populate your bhp3_class module
+- populate your `bhp3_class/web` module
     - mapper.py
     - dirfinder.py
+
+- Can you create a function to return words from a word list?
+  That would let us simplify the dirfinder/wp_killer code.
 
 ---
 
@@ -386,7 +376,5 @@ http://boodelyboo.com/wordpress
 https://www.capterra.com/content-management-software/
 
 https://www.makeuseof.com/tag/10-popular-content-management-systems-online/
-
-Put your new code into the `web` module
 
 ---

