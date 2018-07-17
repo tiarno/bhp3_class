@@ -38,9 +38,11 @@ https://discord.gg/WR23qUj
 ## Pilot class: Interaction
 
 - Need class interaction
-    - use your microphone during class
-    - use chat during class
-    - use the Discord chat after class
+    - During Class:
+        - use your microphone, ask questions!
+        - use chat window
+    - After Class:
+        - use the Discord chat
 
 ---
 
@@ -220,20 +222,18 @@ We'll use this later on in this part of the class.
 - `mylist.pop()`
 
 ![listimage](./images/rrm52.png)
-
-
+- LIFO (last in, first out) # stack
 ---
 
 # Queues
 <span style="color:lightblue">Demo</script>
 
-- LIFO (last in, first out) # stack
 - `myqueue .put(), .get()
 
 ![queueimage](./images/phzXA.jpg)
 
-- FIFO (first in, first out) # queue (ice-cream line)
 - `mydequeue .append() .popleft()`
+- FIFO (first in, first out) # queue (ice-cream line)
 
 ---
 
@@ -308,10 +308,10 @@ http://boodelyboo.com/wordpress
 ## `lxml` module and Xpath
 
 ```python
-    parser = etree.HTMLParser()
-    tree = etree.parse(BytesIO(content), parser=parser)
-    for elem in tree.findall('//input'):
-        # do stuff with elem
+    1. parser = etree.HTMLParser()
+    2. tree = etree.parse(BytesIO(content), parser=parser)
+    3. for elem in tree.findall('//input'):
+          # do stuff with elem
 
 ```
 
@@ -344,13 +344,17 @@ http://boodelyboo.com/wordpress
 
 ---
 
-## Reading
+## Reading 1
 
 - BHP, Chapter 5 (web hacking)
 
 - GitHub Repo: https://github.com/tiarno/bhp3_class
 
 - PEP-8: https://www.datacamp.com/community/tutorials/pep8-tutorial-python-code
+
+---
+
+## Reading 2
 
 - Requests http://docs.python-requests.org/en/master/
 
