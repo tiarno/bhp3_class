@@ -196,6 +196,12 @@ We'll use this later on in this part of the class.
 
 ---
 
+## Okay!
+
+Where we're going...
+
+---
+
 ## os.walk
 
 <span style="color:lightblue">Demo</script>
@@ -220,7 +226,6 @@ We'll use this later on in this part of the class.
 
 - `mylist.append()` 
 - `mylist.pop()`
-
 ![listimage](./images/rrm52.png)
 - LIFO (last in, first out) # stack
 ---
@@ -229,9 +234,7 @@ We'll use this later on in this part of the class.
 <span style="color:lightblue">Demo</script>
 
 - `myqueue .put(), .get()
-
 ![queueimage](./images/phzXA.jpg)
-
 - `mydequeue .append() .popleft()`
 - FIFO (first in, first out) # queue (ice-cream line)
 
