@@ -1,5 +1,6 @@
 from collections import deque
 import queue
+
 EXTENSIONS = ['.php', '.bak', '.orig', '.inc']
 WORDLIST = "/Users/jtimarnold/Downloads/SVNDigger/all.txt"
 

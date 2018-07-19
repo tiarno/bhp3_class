@@ -228,6 +228,7 @@ Where we're going...
 - `mylist.pop()`
 ![listimage](./images/rrm52.png)
 - LIFO (last in, first out) # stack
+
 ---
 
 # Queues
