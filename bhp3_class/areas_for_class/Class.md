@@ -10,7 +10,6 @@
 ## Logistics
 
 - Web class Wednesdays 7:00 - 8:30 EDT
-- Interaction during class
 - Discord Channel to help each other
 https://discord.gg/WR23qUj
 
@@ -22,7 +21,28 @@ https://discord.gg/WR23qUj
 
 ---
 
-# Summary from last class
+# Recording from last class
+https://www.dropbox.com/s/a0sx0k69siy10ia/2018-07-18%2019.00%20Raleigh%20ISSA%20-%20Blackhat%20Python%20Class%201.mp4?dl=0
+
+---
+
+# Update
+
+Make sure your repo is up to date on commits and push to github.
+
+Then:
+
+    git remote add upstream https://github.com/tiarno/bhp3_class.git
+    git fetch upstream
+    git checkout master
+    git merge upstream/master
+    git add -A .
+    git commit -m "merged upstream changes"
+    git push
+
+---
+
+# Previously
 
 - `os.walk`
 - lists, queues, deques
@@ -43,10 +63,33 @@ https://discord.gg/WR23qUj
 
 ---
 
+# HTTP Status Codes
+
+https://www.restapitutorial.com/httpstatuscodes.html
+
+---
+
 # Let's Code!
 
 - Target website uses an unknown architecture.
 - enumerate that website for further attacks.
+
+---
+
+## Target
+
+http://testphp.vulnweb.com/disclaimer.php
+
+---
+
+
+# Online Wordlists
+
+https://github.com/DanMcInerney/Probable-Wordlists
+
+https://github.com/danielmiessler/SecLists
+
+(Discovery/Web-Content/SVNDigger)
 
 ---
 
@@ -63,6 +106,7 @@ https://discord.gg/WR23qUj
 ## `enumeration with dirfinder.py`
 
 <span style="color:lightblue">Demo</script>
+
 
 ---
 
@@ -150,8 +194,6 @@ http://boodelyboo.com/wordpress
 ---
 
 ## Pick your app
-
-https://www.capterra.com/content-management-software/
 
 https://www.makeuseof.com/tag/10-popular-content-management-systems-online/
 

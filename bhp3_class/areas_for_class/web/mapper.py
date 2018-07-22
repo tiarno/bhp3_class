@@ -4,15 +4,15 @@ import requests
 import threading
 import time
 
-FILTERS   = [".jpg", ".gif", "png", ".css"]
-TARGET    = "http://boodelyboo.com/wordpress/"
+FILTERS = [".jpg", ".gif", ".png", ".css"]
+TARGET = "http://boodelyboo.com/wordpress"
 THREADS = 10
 
 web_paths = queue.Queue()
 
 def gather_paths(dirname):
     os.chdir(dirname)
-    for root, _, files in os.walk('.'):
+    for root, dname, files in os.walk('.'):
         for fname in files:
             if os.path.splitext(fname)[1] in FILTERS:
                 continue
@@ -25,7 +25,7 @@ def gather_paths(dirname):
 def test_remote():
     while not web_paths.empty():
         path = web_paths.get()
-        url = f'{TARGET}{path}'
+        url = f'{TARGET}/{path}'
         time.sleep(2)
         r = requests.get(url)
         if r.status_code == 200:
