@@ -110,6 +110,21 @@ https://github.com/danielmiessler/SecLists
 
 ---
 
+## `try/except/else/finally`
+
+    try:
+      something that might cause an error
+    except SomeError as e:
+      print(e)
+      dosomething()
+    else:
+      everything_is_fine()
+    finally:
+      cleanup()
+      
+
+---
+
 # Let's Code!
 
 - Target website is WordPress.
