@@ -9,6 +9,7 @@ TARGET = "http://boodelyboo.com/wordpress"
 THREADS = 10
 
 web_paths = queue.Queue()
+answers = queue.Queue()
 
 def gather_paths(dirname):
     os.chdir(dirname)
@@ -25,11 +26,12 @@ def gather_paths(dirname):
 def test_remote():
     while not web_paths.empty():
         path = web_paths.get()
-        url = f'{TARGET}/{path}'
+        url = f'{TARGET}{path}'
         time.sleep(2)
         r = requests.get(url)
         if r.status_code == 200:
-            print(f'Found location: {url}')
+            answers.put(url)
+            # print(f'Found location: {url}')
             
 def run():
     for i in range(THREADS):
@@ -42,3 +44,7 @@ if __name__ == '__main__':
   gather_paths(dirname)
   input('Press return to continue.')
   run()
+  with open('myanswers.txt', 'w') as f:
+      for answer in answers:
+          f.write(answer)
+  print('done')
