@@ -45,6 +45,6 @@ if __name__ == '__main__':
   input('Press return to continue.')
   run()
   with open('myanswers.txt', 'w') as f:
-      for answer in answers:
-          f.write(answer)
+      while not answers.empty():
+          f.write(answers.get())
   print('done')
