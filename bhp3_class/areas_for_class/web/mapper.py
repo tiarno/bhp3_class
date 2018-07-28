@@ -1,6 +1,7 @@
 import os
 import queue
 import requests
+import sys
 import threading
 import time
 
@@ -32,6 +33,7 @@ def test_remote():
         if r.status_code == 200:
             answers.put(url)
             # print(f'Found location: {url}')
+    sys.exit()
             
 def run():
     for i in range(THREADS):
@@ -44,7 +46,9 @@ if __name__ == '__main__':
   gather_paths(dirname)
   input('Press return to continue.')
   run()
+  web_paths.join()
+  print('got the paths now.')
+  answerlist = list(answers.queue)
   with open('myanswers.txt', 'w') as f:
-      while not answers.empty():
-          f.write(answers.get())
+      f.writelines(answerlist)
   print('done')
