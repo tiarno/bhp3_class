@@ -1,9 +1,9 @@
 from bhp3_class.networking import IP, ICMP
 import ipaddress
 import socket
+import sys
 import threading
 import time
-import sys
 
 SUBNET = '192.168.1.0/24'
 MESSAGE = 'PYTHONRULES!'
