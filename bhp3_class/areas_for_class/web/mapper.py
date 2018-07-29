@@ -1,3 +1,4 @@
+import contextlib
 import os
 import queue
 import requests
@@ -12,8 +13,21 @@ THREADS = 10
 web_paths = queue.Queue()
 answers = queue.Queue()
 
-def gather_paths(dirname):
-    os.chdir(dirname)
+@contextlib.contextmanager
+def chdir(path):
+    """
+    On enter, change directory to specified path.
+    On exit, change direcgory to original.
+    """
+    this_dir = os.getcwd()
+    os.chdir(path)
+    try:
+        yield
+    finally:
+        os.chdir(this_dir)
+
+
+def gather_paths():
     for root, dname, files in os.walk('.'):
         for fname in files:
             if os.path.splitext(fname)[1] in FILTERS:
@@ -32,23 +46,26 @@ def test_remote():
         r = requests.get(url)
         if r.status_code == 200:
             answers.put(url)
-            # print(f'Found location: {url}')
-    sys.exit()
             
 def run():
+    mythreads = list()
     for i in range(THREADS):
         print(f'Spawning thread {i}')
         t = threading.Thread(target=test_remote)
+        mythreads.append(t)
         t.start()
 
+    for thread in mythreads:
+        thread.join()
+        
+
 if __name__ == '__main__':
-  dirname = "/Users/jtimarnold/Downloads/wordpress"
-  gather_paths(dirname)
-  input('Press return to continue.')
-  run()
-  web_paths.join()
-  print('got the paths now.')
-  answerlist = list(answers.queue)
-  with open('myanswers.txt', 'w') as f:
-      f.writelines(answerlist)
-  print('done')
+    with chdir("/Users/jtimarnold/Downloads/wordpress"):
+        gather_paths()
+    input('Press return to continue.')
+    run()
+   
+    with open('myanswers.txt', 'w') as f:
+        for answer in list(answers.queue):
+            f.write(f'{answer}\n')
+    print('done')
