@@ -60,7 +60,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         host = sys.argv[1]
     else:
-        host = '192.168.1.69'
+        host = '192.168.1.100'
     s = Scanner(host)
     s.send()
     s.sniff()

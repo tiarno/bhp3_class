@@ -239,7 +239,7 @@ https://www.erg.abdn.ac.uk/users/gorry/course/inet-pages/icmp-code.html
 
 ## Test it out:
 
-- `ipheader0.py`
+- `ipheader1.py`
 
 ---
 
@@ -278,6 +278,6 @@ http://www.firewall.cx/networking-topics/protocols/icmp-protocol/153-icmp-destin
 
 ## Your Job
 
-- Pick you favorite method to define headers
-- Add an IP and ICMP class to your `bhp3_class/__init__.py` file
-- Create your own network UDP scanner in your `bhp3_class/networking` module
+- Pick your favorite method to define headers
+- Add an IP and ICMP class to your `bhp3_class/packets/__init__.py` file
+- Create your own network UDP scanner in your `bhp3_class/packets` module
