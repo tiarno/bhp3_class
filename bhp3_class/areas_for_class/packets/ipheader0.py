@@ -1,5 +1,8 @@
 import ipaddress
+import os
+import socket
 import struct
+import sys
 
 class IP:
     def __init__(self, buff=None):
@@ -29,11 +32,25 @@ class IP:
             print('%s No protocol for %s' % (e, self.protocol_num))
             self.protocol = str(self.protocol_num)
 
-class ICMP:
-    def __init__(self, buff):
-        header = struct.unpack('<BBHHH', buff)
-        self.type = header[0]
-        self.code = header[1]
-        self.sum = header[2]
-        self.id = header[3]
-        self.seq = header[4]
+def sniff(host):
+    socket_protocol = socket.IPPROTO_ICMP
+    sniffer = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)
+    sniffer.bind((host, 0))
+    sniffer.setsockopt(socket.SOL_IP, socket.IP_HDRINCL, 1)
+
+    try:
+        while True:
+            raw_buffer = sniffer.recvfrom(65535)[0]
+            ip_header = IP(raw_buffer[0:20])
+            print('Protocol: %s %s -> %s' % (ip_header.protocol, ip_header.src_address, ip_header.dst_address))
+            print(f'Version: {ip_header.ver} Header Length: {ip_header.ihl}  TTL: {ip_header.ttl}')
+                
+    except KeyboardInterrupt:
+        sys.exit()
+
+if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        host = sys.argv[1]
+    else:
+        host = '192.168.1.100'
+    sniff(host)

@@ -1,4 +1,4 @@
-from bhp3_class.networking import IP, ICMP
+from bhp3_class.packets import IP, ICMP
 import ipaddress
 import socket
 import sys

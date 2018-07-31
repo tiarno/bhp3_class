@@ -135,7 +135,11 @@ sock_obj = socket.socket(socket_family,  # AF_INET
 
 ## Code 
 
-- ipheader_struct.py
+- c_ip.py
+- struct_ip.code
+
+- c_icmp.py
+- struct_icmp.py
 
 ---
 
@@ -157,12 +161,6 @@ https://docs.python.org/3/library/struct.html
     8.     H checksum
     9.     4s src ip
     10.    4s dst ip
-
----
-
-## Again, with `ctypes`
-
-- ipheader_c.py
 
 ---
 
@@ -218,8 +216,9 @@ We have one byte and want the low-order nybble:
 
 ---
 
+## Test it out:
 
-## Test `ipheader_struct.py`
+- `ipheader0.py`
 
 ---
 
@@ -235,6 +234,12 @@ We have one byte and want the low-order nybble:
 - traceroute
 
 https://www.erg.abdn.ac.uk/users/gorry/course/inet-pages/icmp-code.html
+
+---
+
+## Test it out:
+
+- `ipheader0.py`
 
 ---
 
@@ -254,7 +259,9 @@ https://docs.python.org/3/library/ipaddress.html
 
 ---
 
-`scanner.py`
+## Test it out
+
+- `scanner.py`
 
 ---
 
