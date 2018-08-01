@@ -6,6 +6,12 @@
 
 ---
 
+## Github repo
+
+https://github.com/tiarno/bhp3_class
+
+---
+
 ## Summary from last class
 
 - mapping an app
@@ -281,3 +287,10 @@ http://www.firewall.cx/networking-topics/protocols/icmp-protocol/153-icmp-destin
 - Pick your favorite method to define headers
 - Add an IP and ICMP class to your `bhp3_class/packets/__init__.py` file
 - Create your own network UDP scanner in your `bhp3_class/packets` module
+
+---
+
+## Feedback please!
+
+- tim@reachtim.com
+- discord: https://discord.gg/WR23qUj
