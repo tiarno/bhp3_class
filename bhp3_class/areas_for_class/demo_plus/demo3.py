@@ -1,6 +1,6 @@
 from lxml import etree
 
-def get_links(url):
+def get_links(tree):
     links = dict()
     
     for elem in tree.findall('//a'):
@@ -13,6 +13,7 @@ if __name__ == '__main__':
     parser = etree.HTMLParser()
     tree = etree.parse(url, parser=parser)
     headelem = tree.find('//h1')
+
     if headelem is not None:
         print('Analysis for: ')
         print(headelem.text.upper())
