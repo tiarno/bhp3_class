@@ -9,13 +9,10 @@ SUBNET = '192.168.1.0/24'
 MESSAGE = 'PYTHONRULES!'
 
 def udp_sender():
-    time.sleep(2)
-    sender = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    for ip in ipaddress.ip_network(SUBNET).hosts():
-        try:
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sender:
+        for ip in ipaddress.ip_network(SUBNET).hosts():
             sender.sendto(bytes(MESSAGE, 'utf8'), (str(ip), 65212))
-        except Exception as e:
-            print(f'UDP Error {e} on IP:{ip}')
+            
 
 class Scanner:
     def __init__(self, host):
@@ -23,11 +20,7 @@ class Scanner:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP)
         self.socket.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
         self.socket.bind((host, 0))
-    
-    def send(self):
-        t = threading.Thread(target=udp_sender)
-        t.start()
-    
+        
     def sniff(self):
         hosts_up = [f'{str(self.host)} *']
         try:
@@ -53,8 +46,6 @@ class Scanner:
                 print(f'{host}')
             print('')
             sys.exit()
-        except Exception as e:
-            print(f'Sniff error {e}')
 
 if __name__ == '__main__':
     if len(sys.argv) == 2:
@@ -62,5 +53,7 @@ if __name__ == '__main__':
     else:
         host = '192.168.1.100'
     s = Scanner(host)
-    s.send()
+    time.sleep(1)
+    t = threading.Thread(target=udp_sender)
+    t.start()
     s.sniff()
