@@ -226,3 +226,9 @@ with open('help.txt', 'w') as f:
 
 - tim@reachtim.com
 - discord: https://discord.gg/WR23qUj
+
+---
+
+## Extra links
+
+- https://www.securitywizardry.com/index.php/tools/packet-headers.html
