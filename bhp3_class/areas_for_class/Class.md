@@ -64,6 +64,7 @@ Plain Git:
 - git fork is a GitHub thing only
 - `git clone` (get a copy of a repo)
 - git and your local repo:
+    - add/commit changes
     - can have a remote (e.g., GitHub)
     - git pull (pulls down updates from the remote)
     - git push (pushes up changes to the remote of your repo)
@@ -96,7 +97,6 @@ Plain Git:
 
 ```python
   IPv4Network('192.168.1.69/16')
-    .network_address: IPv4Address('192.168.1.69')
     .hosts() -> iterator over usable hosts in network
 
   ipaddress.ip_address(self.src)
