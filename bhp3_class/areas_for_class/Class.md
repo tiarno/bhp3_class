@@ -233,3 +233,5 @@ with open('help.txt', 'w') as f:
 
 - https://www.securitywizardry.com/index.php/tools/packet-headers.html
 - https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github/9257901#9257901
+
+- http://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo;
