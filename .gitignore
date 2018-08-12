@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+pictures/
+*.pcap
+
 .vscode/ 
 Pipfile.lock
 bhp3_class.egg-info/
