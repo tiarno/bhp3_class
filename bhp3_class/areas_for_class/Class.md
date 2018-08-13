@@ -26,7 +26,7 @@ https://github.com/tiarno/bhp3_class
 ## scapy
 
 - python library
-- interative tool
+- interative tool using Python REPL (shell)
 - create, decode, send, receive packets
 
 ---
@@ -54,14 +54,6 @@ https://github.com/tiarno/bhp3_class
 
 ---
 
-## `lsc()`, `ls()`
-
-- IP
-- TCP
-- ICMP
-
----
-
 ## Another view
 
 ```
@@ -76,12 +68,31 @@ https://github.com/tiarno/bhp3_class
 
 ---
 
+## `lsc()`, `ls()`
+
+- IP
+- TCP
+- ICMP
+
+---
+
+## Common Commands
+
+- rdppcap
+- wrpcap
+- send
+- sr
+- sniff
+- filter (BPF)
+
+---
+
 ## ARP
 
 ```python
 ether = Ether(dst="ff:ff:ff:ff:ff:ff")
 arp = ARP(pdst='192.168.1.69/24')
-ans, unans = srp(ether/arp, iface='en0', timeout=2)
+ans, unans = srp(ether/arp, iface='en0', timeout=2) #Layer2
 for snd, rcv in ans:
     print(rcv.sprintf(r"%ARP.psrc% %Ether.src%").split())
 ```
@@ -120,20 +131,19 @@ http://www.asciitable.com
 
 ---
 
-## Common Commands
+## BPF
 
-- rdppcap
-- wrpcap
-- send
-- sr
-- sniff
-- filter (BPF)
-
----
+http://biot.com/capstats/bpf.html
 
 ## Three-way Handshake
 
+- on attacker:
+    - `iptables -t filter -I OUTPUT -p tcp --sport 10000 --tcp-flags RST RST -j DROP`
+    - mac: `sysctl -w net.inet.ip.forwarding=1`
+    - linux: `echo 1 > /proc/sys/net/ipv4/ip_forward`
 - on target: `tcpdump -ni any port 8000 -S`
+
+---
 
 ```python
 me, sport = '192.168.1.69', 10000
@@ -170,6 +180,21 @@ sendp(packet)
 
 ---
 
+## Python Named Tuples
+
+- immutable
+- reference values like object properties
+- more readable code
+
+```
+Point = namedtuple('Point', 'x y')
+pt = Point(1.0, 2.0)
+pt.x
+pt.y
+```
+
+---
+
 ## ARP Poison Program
 
 `arper.py`
@@ -180,6 +205,7 @@ sendp(packet)
 
 - Reading (links below)
 - Create your ARP Poison program
+- Recreate your network scanner using scapy
 - Consider ways to protect against it
 
 ---
@@ -191,6 +217,7 @@ sendp(packet)
 2. https://thepacketgeek.com/series/building-network-tools-with-scapy/
 3. https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-6500-series-switches/white_paper_c11_603839.html
 4. https://codingsec.net/2016/06/arp-spoofing-attack/
+5. http://biot.com/capstats/bpf.html
 
  
 ---
