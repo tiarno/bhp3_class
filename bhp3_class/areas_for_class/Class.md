@@ -62,8 +62,6 @@ https://github.com/tiarno/bhp3_class
 >>> new_ip = IP(str(a))
 >>> new_ip
 <IP  version=6 ihl=2 tos=0x27 len=17756 id=30768 flags=MF frag=4188 ttl=120 proto=dsr chksum=0x305c src=120.49.52.92 dst=120.48.48.92 options=[<IPOption  copy_flag=0 optclass=3 option=upstream_multicast_packet length=48 value='1\\x00\\x00@\\x00\\x07\\xff\\xc0\\xa8\\x01E\\x' |>] |<Raw  load="ac\\xd9\\x04$'" |>>
->>> new_ip.hide_defaults()
->>> new_ip
 ```
 
 ---
@@ -116,6 +114,7 @@ hosts = [
     'www.pacsec.com']
 
 res, unans = traceroute(hosts, dport=[80,443], maxttl=20, retry=-2)
+res.graph()
 ```
 
 ---
@@ -135,6 +134,8 @@ http://www.asciitable.com
 
 http://biot.com/capstats/bpf.html
 
+---
+
 ## Three-way Handshake
 
 - on attacker:
@@ -142,6 +143,7 @@ http://biot.com/capstats/bpf.html
     - mac: `sysctl -w net.inet.ip.forwarding=1`
     - linux: `echo 1 > /proc/sys/net/ipv4/ip_forward`
 - on target: `tcpdump -ni any port 8000 -S`
+
 
 ---
 
@@ -219,8 +221,9 @@ pt.y
 4. https://codingsec.net/2016/06/arp-spoofing-attack/
 5. http://biot.com/capstats/bpf.html
 
- 
+
 ---
+
 
 ## Feedback please!
 
