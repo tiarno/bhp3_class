@@ -106,6 +106,23 @@ r, u = arping('192.168.1.0/24')
 ```python
 r[0][1].show()
 ```
+---
+
+## ARP watch
+
+```python
+from scapy.all import ARP, sniff
+
+def arp_display(pkt):
+    if pkt[ARP].op == 1:  # who-has (request)
+        return f'Request: {pkt[ARP].psrc} is asking about {pkt[ARP].pdst}'
+    if pkt[ARP].op == 2:  # is-at (response)
+        return f'*Response: {pkt[ARP].hwsrc} has address {pkt[ARP].psrc}'
+ 
+sniff(prn=arp_display, filter='arp', store=0, count=10)
+```
+
+---
 
 ## Scapy Graphics
 
@@ -211,6 +228,12 @@ pt.y
 ## ARP Poison Program
 
 `arper.py`
+
+---
+
+## DNS Spoofing:
+
+https://thepacketgeek.com/scapy-p-09-scapy-and-dns/
 
 ---
 
