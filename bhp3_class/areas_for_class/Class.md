@@ -148,7 +148,7 @@ http://biot.com/capstats/bpf.html
 
 ## Three-way Handshake
 
-- on "attacker":
+- on client:
     - `iptables -t filter -I OUTPUT -p tcp --sport 10000 --tcp-flags RST RST -j DROP`
     - `tcpdump -ni any port 8000 -S`
 
