@@ -106,6 +106,7 @@ r, u = arping('192.168.1.0/24')
 ```python
 r[0][1].show()
 ```
+
 ---
 
 ## ARP watch
