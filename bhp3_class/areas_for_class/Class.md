@@ -97,6 +97,16 @@ for snd, rcv in ans:
 
 ---
 
+## Even Faster:
+
+```python
+r, u = arping('192.168.1.0/24')
+```
+
+```python
+r[0][1].show()
+```
+
 ## Scapy Graphics
 
 ```python
@@ -138,18 +148,15 @@ http://biot.com/capstats/bpf.html
 
 ## Three-way Handshake
 
-- on attacker:
+- on "attacker":
     - `iptables -t filter -I OUTPUT -p tcp --sport 10000 --tcp-flags RST RST -j DROP`
-    - mac: `sysctl -w net.inet.ip.forwarding=1`
-    - linux: `echo 1 > /proc/sys/net/ipv4/ip_forward`
-- on target: `tcpdump -ni any port 8000 -S`
-
+    - `tcpdump -ni any port 8000 -S`
 
 ---
 
 ```python
-me, sport = '192.168.1.69', 10000
-them, dport = '192.168.1.100', 8000
+me, sport = '192.168.1.100', 10000
+them, dport = '192.168.1.69', 8000
 #
 ip = IP(src=me, dst=them)
 syn = TCP(sport=sport, dport=dport, flags='S', seq=1000)
@@ -165,6 +172,10 @@ send(ip/ack)
 - poison ARP cache of two devices
 - tell each device attacker MAC is the other's address
 - man-in-the-middle: monitor communications
+
+
+- mac: `sysctl -w net.inet.ip.forwarding=1`
+- linux: `echo 1 > /proc/sys/net/ipv4/ip_forward`
 
 ---
 
