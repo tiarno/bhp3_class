@@ -6,7 +6,7 @@
 '''
 from scapy.all import sniff, sr1, send, IP, UDP, DNS, DNSQR, DNSRR
 
-DNS_SERVER_IP = ''
+DNS_SERVER_IP = '192.168.1.254'
 bpf_filt = f'udp dst port 53 and ip dst {DNS_SERVER_IP}'
  
 def dns_responder():
@@ -28,8 +28,9 @@ def dns_responder():
             if 'trailers.apple.com' in str(pkt['DNS Question Record'].qname):
                 spoofed = IP(dst=pkt[IP].src)\
                     /UDP(dport=pkt[UDP].sport, sport=53)\
-                    /DNS(id=pkt[DNS].id, ancount=1, an=DNSRR(rrname=pkt[DNSQR].qname, rdata=DNS_SERVER_IP)\
-                    /DNSRR(rrname='trailers.apple.com', rdata=DNS_SERVER_IP))
+                    /DNS(id=pkt[DNS].id, ancount=1, an=DNSRR(rrname=pkt[DNSQR].qname, rdata=DNS_SERVER_IP)
+                    /DNSRR(rrname='myjunkyname', rdata=DNS_SERVER_IP))
+                print(spoofed.show())
                 send(spoofed, verbose=0)
                 return f'Spoofed DNS Response Sent: {spoofed.summary()}'
  
@@ -38,4 +39,5 @@ def dns_responder():
  
     return get_response
  
-sniff(filter=bpf_filt, prn=dns_responder())
+if __name__ == '__main__':
+    sniff(filter=bpf_filt, prn=dns_responder())
