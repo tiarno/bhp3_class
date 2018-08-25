@@ -78,7 +78,7 @@ class Arper():
         packets = sniff(count=count, filter=bpf_filter, iface=self.interface)
         wrpcap('arper.pcap', packets)
         print('Got the packets')
-        self.restore()
+        #self.restore()
         self.poison_thread.terminate()
         print('Finished.')
         
