@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import zlib
+
 OUTDIR = 'pictures'
 PCAPS = '/Users/jtimarnold/Downloads'
 

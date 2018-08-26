@@ -1,10 +1,10 @@
 from multiprocessing import Process
-from scapy.all import (ARP, Ether, conf, get_if_hwaddr, 
+from scapy.all import (ARP, Ether, conf, get_if_hwaddr,
                        send, sniff, sndrcv, srp, wrpcap)
 import os
 import sys
 import time
-import signal
+
 
 def get_mac(targetip):
     packet = Ether(dst='ff:ff:ff:ff:ff:ff')/ARP(op="who-has", pdst=targetip)

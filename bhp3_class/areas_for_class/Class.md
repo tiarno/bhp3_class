@@ -63,6 +63,24 @@ a[0].pdfdump(layer_shift=1)
 
 ---
 
+## Cartopy World Map
+
+```
+mapfile = '/root/GeoLite2-City/GeoLite2-City.mmdb'
+conf.geoip_city = mapfile
+traceroute_map('www.gsxt.gov.cn', 'reachtim.com')
+```
+
+---
+
+## Mapping Links
+
+- https://dev.maxmind.com/geoip/geoip2/geolite2/
+- https://scitools.org.uk/cartopy/docs/latest/index.html
+- https://scitools.org.uk/cartopy/docs/latest/matplotlib/intro.html
+
+---
+
 ## Three-way Handshake
 
 - on client (Kali):
@@ -70,15 +88,15 @@ a[0].pdfdump(layer_shift=1)
     - `tcpdump -ni any port 8000 -S`
 
 - on server:
-    - `python2 -m SimpleHTTPServer`
+    - `python2 -m SimpleHTTPServer` or
     - `python3 -m http.server`
 
 ---
 
 
 ```python
-me, sport = '192.168.1.104', 10000
-them, dport = '192.168.1.69', 8000
+me, sport = '192.168.1.104', 10000 # client
+them, dport = '192.168.1.69', 8000 # server
 #
 ip = IP(src=me, dst=them)
 syn = TCP(sport=sport, dport=dport, flags='S', seq=1000)
@@ -108,14 +126,14 @@ https://thepacketgeek.com/scapy-p-09-scapy-and-dns/
 
 `recapper.py`
 
-
+- https://developer.mozilla.org/en-US/docs/Glossary/MIME_type
 ---
 
 ## Demo: Identify Faces
 
-`kali:/Desktop/bhp3/chapter04`
+- `kali:/Desktop/bhp3/chapter04`
 
-`detector.py`
+- `detector.py`
 
 ---
 
@@ -128,12 +146,12 @@ send( fragment(IP(dst="192.168.1.104")
 ```
 - ack scan
 ```
-ans, unans = sr(IP(dst="www.slashdot.org")
+ans, unans = sr(IP(dst="www.issa.org")
                 /TCP(dport=[80,666],flags="A"))
 ```
 - Xmas packet
 ```
-ans, unans = sr(IP(dst="192.168.1.1")
+ans, unans = sr(IP(dst="192.168.1.104")
                 /TCP(dport=666,flags="FPU") )
 ```
 
@@ -164,12 +182,12 @@ ans, unans = sr( IP(dst="192.168.*.1-10")
 
 - TCP SYN traceroute
 ```
-ans, unans = sr(IP(dst="4.2.2.1",ttl=(1,10))
+ans, unans = sr(IP(dst="8.8.8.8",ttl=(1,10))
                 /TCP(dport=53, flags="S"))
 ```
 - UDP traceroute
 ```
-res, unans = sr(IP(dst="target", ttl=(1,20))
+res, unans = sr(IP(dst="8.8.8.8", ttl=(1,20))
                 /UDP()/DNS(qd=DNSQR(qname="test.com"))
 ```
 
@@ -179,7 +197,7 @@ res, unans = sr(IP(dst="target", ttl=(1,20))
 
 - write your own arp poison tool
 - experiment with graphics and scapy
-- write your own pcap extraction tool
+- write your own pcap extraction tool (recapper)
 - examine code for scapy.arpcachepoison
 
 
