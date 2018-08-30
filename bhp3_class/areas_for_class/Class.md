@@ -127,11 +127,10 @@ https://thepacketgeek.com/scapy-p-09-scapy-and-dns/
 `recapper.py`
 
 - https://developer.mozilla.org/en-US/docs/Glossary/MIME_type
+
 ---
 
 ## Demo: Identify Faces
-
-- `kali:/Desktop/bhp3/chapter04`
 
 - `detector.py`
 
