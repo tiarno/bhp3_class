@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 pictures/
-*.pcap
+arper.pcap
 
 .vscode/ 
 Pipfile.lock
