@@ -78,14 +78,14 @@ ssh -L localhost:9000:boodelyboo.com:80 testuser@192.168.1.104
 
 ---
 
-## Basic Tunnel
+## Basic Tunnel 1
 
 ![sshimage](./images/ssh_tunnel.png)
 
 
 ---
 
-## Tunneling Out
+## Basic Tunnel 2
 
 ![sshoutimage](./images/ssh_tunnel_out.png)
 
@@ -94,7 +94,7 @@ ssh -L localhost:9000:boodelyboo.com:80 testuser@192.168.1.104
 ## Demo
 
 - server = victim/kali, client = attacker/mac
-- server: `netstat -tcp -c` #just for watching 
+- server: `netstat -t -c` #just for watching 
 - client: `ssh -L localhost:9000:192.168.1.104:21 testuser@192.168.1.104`
 - client: `python ftpclient.py 127.0.0.1 9000 testuser`
 
