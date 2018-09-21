@@ -7,7 +7,7 @@ AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:19.0) Gecko/20100101 Firefox/19.0"
 EXTENSIONS = ['.php', '.bak', '.orig', '.inc']
 TARGET = "http://testphp.vulnweb.com"
 THREADS = 50
-WORDLIST = "/Users/jtimarnold/Downloads/SVNDigger/all.txt"
+WORDLIST = "/mydownloads/all.txt" # See SVNDIGGER
 
 def extend_words(words):
     allwords = queue.Queue(words)
@@ -44,7 +44,6 @@ if __name__ == '__main__':
     # getwords returns list
     # extend_words returns queue
     words = extend_words(get_words(WORDLIST))
-    input('Press return to continue.')
     for _ in range(THREADS):
         t = threading.Thread(target=dir_find, args=(words,))
         t.start()
